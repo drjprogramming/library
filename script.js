@@ -22,7 +22,6 @@ function addBookToLibrary() {
   const book = new Book(author, title, pages, read);
   const uniqueId = undefined;
   myLibrary.push(book);
-  console.log(myLibrary);
   form.classList.remove("show");
 }
 
@@ -46,20 +45,62 @@ document.addEventListener("submit", (e) => {
   displayBooks();
 });
 
+//Get remove button to remove book (classname not working)
+
 function displayBooks() {
   myLibrary.forEach((book, index) => {
     const newId = `index-${index}`;
-    book.uniqueId = newId;
     const existingBooks = document.getElementById(newId);
     const libraryBook = document.createElement("div");
+    const removeButton = document.createElement("button");
+    const readButton = document.createElement("button");
+    book.uniqueId = newId;
     libraryBook.id = book.uniqueId;
-    if (existingBooks == null) {
-      const author = document.createElement("p");
-      author.innerHTML = book.author;
-      library.appendChild(libraryBook);
-      libraryBook.appendChild(author);
+    removeButton.innerHTML = "Remove";
+    if (book.read === true) {
+      readButton.innerHTML = "Completed";
+    } else {
+      readButton.innerHTML = "Incomplete";
+    }
+    if (existingBooks == null && libraryBook.className != "hide") {
+      cardCreate(book, "author", libraryBook);
+      cardCreate(book, "title", libraryBook);
+      cardCreate(book, "pages", libraryBook);
+      libraryBook.appendChild(readButton);
+      libraryBook.appendChild(removeButton);
+      console.log(libraryBook.classList);
     } else {
       return;
+    }
+    readBook(readButton);
+    removeBook(removeButton, libraryBook);
+  });
+}
+
+function cardCreate(book, field, libraryBook) {
+  const fieldElement = document.createElement("p");
+  fieldElement.innerHTML = book[field];
+  library.appendChild(libraryBook);
+  libraryBook.appendChild(fieldElement);
+}
+
+function removeBook(removeButton, libraryBook) {
+  removeButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    //could also add alert
+    libraryBook.classList.add("hide");
+    libraryBook.parentNode.removeChild(libraryBook);
+    console.log(libraryBook.classList);
+  });
+}
+
+function readBook(readButton) {
+  readButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (readButton.innerHTML === "Completed") {
+      readButton.innerHTML = "Incomplete";
+    } else {
+      readButton.innerHTML = "Completed";
     }
   });
 }
