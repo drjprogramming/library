@@ -6,6 +6,7 @@ const bookTitle = document.querySelector("#title");
 const bookPages = document.querySelector("#pages");
 const bookRead = document.querySelector("#read");
 const library = document.querySelector(".library");
+const completedBook = document.querySelector(".completed-book");
 
 function Book(author, title, pages, read) {
   this.author = author;
@@ -75,7 +76,7 @@ function createBooks(book, index) {
   } else {
     return;
   }
-  readBook(readButton);
+  readBook(readButton, libraryBook);
   removeBook(removeButton, libraryBook, book);
 }
 
@@ -83,17 +84,23 @@ function cardCreate(book, field, libraryBook) {
   const fieldElement = document.createElement("p");
   fieldElement.innerHTML = book[field];
   fieldElement.classList.add(field);
-  library.appendChild(libraryBook);
+  if (book.read === true) {
+    completedBook.appendChild(libraryBook);
+  } else {
+    library.appendChild(libraryBook);
+  }
   libraryBook.appendChild(fieldElement);
 }
 
-function readBook(readButton) {
+function readBook(readButton, libraryBook) {
   readButton.addEventListener("click", (e) => {
     e.preventDefault();
     if (readButton.innerHTML === "Completed") {
       readButton.innerHTML = "Incomplete";
+      library.appendChild(libraryBook);
     } else {
       readButton.innerHTML = "Completed";
+      completedBook.appendChild(libraryBook);
     }
   });
 }

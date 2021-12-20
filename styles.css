@@ -1,7 +1,74 @@
+* {
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border: 1px solid black;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
 form {
     display: none;
 }
 
 .show {
     display: block;
+    margin-left: 20px;
+}
+
+.library {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.library-book {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-left: 20px;
+}
+
+.completed-book {
+    display: flex;
+    padding-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+
+.author,
+.title,
+.pages{
+    margin-top: 20px;
+}
+
+.read,
+.remove {
+    margin-top: 10px;
+}
+
+.new-book {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.new-book button {
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.book-form {
+    display: flex;
+}
+
+footer {
+
 }
