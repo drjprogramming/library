@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Library</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
-    <title>Library</title>
 </head>
 <body>
     <div class="container">
@@ -15,7 +14,8 @@
         <section class="new-book">
             <button>New Book</button>
         </section>
-        <section class="library">   
+        <div class="incomplete"><h2>New Books</h2></div>   
+        <section class="library">
                 <form>
                     <label for="author">Author:</label><br>
                     <input type="text" id="author" name="author"><br>
@@ -29,10 +29,10 @@
                     <input type="submit" value="Submit">
                 </form>
         </section>
+        <div class="complete"><h2>Completed Books</h2></div>   
         <section class="completed-book">
-            
         </section>
-        <footer></footer>
     </div>
+    <footer>Copyright</footer>
 </body>
 </html>

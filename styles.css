@@ -1,13 +1,14 @@
 * {
     margin: 0;
+    overflow: hidden;
 }
 
 .container {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: calc(100vh - 50px);
     display: flex;
-    border: 1px solid black;
     flex-direction: column;
+    margin: 0px 10px 0px 10px;
 }
 
 header {
@@ -21,19 +22,30 @@ form {
 
 .show {
     display: block;
-    margin-left: 20px;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.incomplete {
+    padding-top: 20px;
 }
 
 .library {
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 40px;
 }
 
 .library-book {
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding-left: 20px;
+    padding-left: 40px;
+    padding-top: 20px;
+}
+
+.complete {
+    padding-top: 30px;
 }
 
 .completed-book {
@@ -70,5 +82,8 @@ form {
 }
 
 footer {
-
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
 }
