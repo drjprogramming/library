@@ -9,24 +9,33 @@
     <script defer src="script.js"></script>
 </head>
 <body>
+    <header><h1>Library</h1></header>
     <div class="container">
-        <header><h1>Library</h1></header>
         <section class="new-book">
             <button>New Book</button>
         </section>
         <div class="incomplete"><h2>New Books</h2></div>   
         <section class="library">
                 <form>
-                    <label for="author">Author:</label><br>
-                    <input type="text" id="author" name="author"><br>
-                    <br>
-                    <label for="title">Title:</label><br>
-                    <input type="text" id="title" name="title"><br><br>
-                    <label for="pages">Pages:</label><br>
-                    <input type="text" id="pages" name="pages"><br><br>
-                    <label for="read">Read:</label><br>
-                    <input type="checkbox" id="read" name="read"><br><br>
+                    <div class="form-author">
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author">
+                    </div>
+                    <div class="form-title">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title">
+                    </div>
+                    <div class="form-pages">
+                    <label for="pages">Pages:</label>
+                    <input type="text" id="pages" name="pages">
+                    </div>
+                    <div class="form-read">
+                    <label for="read">Read:</label>
+                    <input type="checkbox" id="read" name="read">
+                    </div>
+                    <div class="form-submit">
                     <input type="submit" value="Submit">
+                    </div>
                 </form>
         </section>
         <div class="complete"><h2>Completed Books</h2></div>   
