@@ -1,10 +1,10 @@
 * {
     margin: 0;
-    overflow: hidden;
 }
 
 body {
     background-color: rgba(54, 32, 2, 0.945);
+    overflow: hidden;
 }
 
 .container {
@@ -14,8 +14,13 @@ body {
     margin: 0px 10px 0px 10px;
     border: 1px solid black;
     overflow: auto;
-    /*how to get scrolling to enable*/
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
+
+.container::-webkit-scrollbar {
+    display: none;
+  }
 
 header {
     display: flex;
@@ -44,7 +49,6 @@ form {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    overflow: auto;
 }
 
 .library-book {
@@ -52,15 +56,18 @@ form {
     background-color:rgba(116, 96, 68, 0.945);
     flex-direction: column;
     text-align: center;
+    justify-content: space-between;
     margin-left: 20px;
     margin-top: 1rem;
     padding: .5em;
     border-radius: .2em;
     width: 8em;
+    min-height: 10rem;
+    overflow-wrap: break-word;
 }
 
 .complete {
-    margin-top: 20px;
+    margin-top: 2em;
     color: white;
     text-shadow: 2px 2px black;
     margin-left: 20px;
@@ -72,22 +79,35 @@ form {
     flex-direction: row;
     margin-bottom: 50px;
     flex-wrap: wrap;
-    overflow: auto;
 }
 
+.author,
 .title,
+.pages {
+    min-height: 1.25rem;
+}
+
+.author,
 .pages{
-    margin-top: 12px;
+    margin-top: 1rem;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.author {
+    font-style: italic;
 }
 
 .read {
-    margin-top: 15px;
-    padding: 5px;
+    margin-top: 1.5rem;
+    padding: .5em 1em;
 }
 
 .remove {
-    margin-top: 12px;
-    padding: 10px;
+    margin-top: .7rem;
+    padding: .5em 1em;
 }
 
 .new-book {
@@ -110,7 +130,7 @@ form {
     flex-direction: column;
     width: 18.25rem;
     background-color:rgba(116, 96, 68, 0.945);
-    padding: .8em .5em;
+    padding: .2em .5em;
     border-radius: .2em;
 }
 
@@ -121,18 +141,20 @@ form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 1em;
 }
 
 .form-read {
-    margin-top: 10px;
+    margin-top: 1em;
 }
 
 .form-read input {
-    margin-left: 10px;
+    margin-left: 1.25em;
+    outline: none;
 }
 
 .form-submit {
+    margin: 1rem 0 .5rem 0;
     display: flex;
     padding: 0;
 }
@@ -148,7 +170,7 @@ input {
 }
 
 .form-submit input {
-    padding: .8em;
+    padding: 1em;
     border-radius: 5px;
     border: 1px solid grey;
     margin-left: 0;

@@ -18,7 +18,8 @@ function Book(author, title, pages, read) {
 function addBookToLibrary() {
   const author = bookAuthor.value;
   const title = bookTitle.value;
-  const pages = bookPages.value;
+  const pagesAppend = `${bookPages.value}pgs`;
+  const pages = pagesAppend;
   const read = bookRead.checked;
   const book = new Book(author, title, pages, read);
   const uniqueId = undefined;
@@ -68,11 +69,15 @@ function createBooks(book, index) {
     readButton.innerHTML = "Incomplete";
   }
   if (existingBooks == null && book.removed != true) {
-    cardCreate(book, "author", libraryBook);
     cardCreate(book, "title", libraryBook);
+    cardCreate(book, "author", libraryBook);
     cardCreate(book, "pages", libraryBook);
-    libraryBook.appendChild(readButton);
-    libraryBook.appendChild(removeButton);
+
+    const div = document.createElement("div");
+    div.classList.add("library-book-buttons");
+    libraryBook.appendChild(div);
+    div.appendChild(readButton);
+    div.appendChild(removeButton);
   } else {
     return;
   }
