@@ -19,7 +19,7 @@ function addBookToLibrary() {
   const author = bookAuthor.value;
   const title = bookTitle.value;
   const pagesAppend = `${bookPages.value}pgs`;
-  const pages = pagesAppend;
+  const pages = bookPages.value ? pagesAppend : "";
   const read = bookRead.checked;
   const book = new Book(author, title, pages, read);
   const uniqueId = undefined;
@@ -34,6 +34,10 @@ button.addEventListener("click", (e) => {
     button.innerText = "Cancel";
   } else {
     form.classList.remove("show");
+    bookAuthor.value = "";
+    bookTitle.value = "";
+    bookPages.value = "";
+    bookRead.checked = false;
     button.innerText = "New Book";
   }
 });
@@ -64,9 +68,9 @@ function createBooks(book, index) {
   libraryBook.id = book.uniqueId;
   removeButton.innerHTML = "Remove";
   if (book.read === true) {
-    readButton.innerHTML = "Completed";
+    readButton.innerHTML = "Mark Incomplete";
   } else {
-    readButton.innerHTML = "Incomplete";
+    readButton.innerHTML = "Mark Complete";
   }
   if (existingBooks == null && book.removed != true) {
     cardCreate(book, "title", libraryBook);
@@ -100,11 +104,11 @@ function cardCreate(book, field, libraryBook) {
 function readBook(readButton, libraryBook) {
   readButton.addEventListener("click", (e) => {
     e.preventDefault();
-    if (readButton.innerHTML === "Completed") {
-      readButton.innerHTML = "Incomplete";
+    if (readButton.innerHTML === "Mark Incomplete") {
+      readButton.innerHTML = "Mark Complete";
       library.appendChild(libraryBook);
     } else {
-      readButton.innerHTML = "Completed";
+      readButton.innerHTML = "Mark Incomplete";
       completedBook.appendChild(libraryBook);
     }
   });
@@ -113,7 +117,6 @@ function readBook(readButton, libraryBook) {
 function removeBook(removeButton, libraryBook, book) {
   removeButton.addEventListener("click", (e) => {
     e.preventDefault();
-    //could also add alert
     book.removed = true;
     libraryBook.parentNode.removeChild(libraryBook);
     displayBooks();
